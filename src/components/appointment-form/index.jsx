@@ -1,11 +1,19 @@
 import { useForm } from "react-hook-form";
 import React, { Fragment } from "react";
-
+import swal from "sweetalert";
 const AppointmentForm = () => {
     const { register, handleSubmit, errors } = useForm({
         mode: "onBlur",
     });
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        if (data) {
+            swal({
+                title: "Success!",
+                text: "your request sent to Admin for approval!",
+                icon: "success", // Options: "success", "error", "warning", "info"
+            });
+        }
+    };
     return (
         <Fragment>
             <form onSubmit={handleSubmit(onSubmit)} method="POST">
